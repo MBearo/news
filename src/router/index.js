@@ -1,3 +1,10 @@
+/*
+使用vue-router控制路由
+路由是有嵌套关系的
+把路由理解成树枝，那么组件就是树枝上的树叶，
+路由控制的项目的主体结构，通过变更路由来实现那一大块呈现
+*/
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/components/view/Index'
@@ -21,7 +28,11 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index,
+      //这里是重定向
+      //https://router.vuejs.org/zh-cn/essentials/redirect-and-alias.html
       redirect: '/Index',
+      //嵌套路由
+      //https://router.vuejs.org/zh-cn/essentials/nested-routes.html
       children: [{
         path: 'Index',
         name: 'Index',
