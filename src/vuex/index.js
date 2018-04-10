@@ -28,10 +28,10 @@ export default new Vuex.Store({
         }) {
             axios
                 .post(
-                    urls.urls + "Graduation/ReadData",
+                    urls.urls + "Graduation/Login",
                     qs.stringify({
-                        batch: true,
-                        object: 'news'
+                        username: true,
+                        password: 'news'
                     })
                 )
                 .then(result => {
