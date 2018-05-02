@@ -1,11 +1,11 @@
 <template>
     <div class="">
         <div class="person text-center bg-white" v-if="$store.state.token">
-            <div class="headimg bg-cover inline-block"></div>
+            <router-link tag="div" class="headimg bg-cover inline-block" to="/ChangeImg"></router-link>
             <div class="nickname">
-                昵称
+                {{$store.state.token.Name}}
             </div>
-            <div class="flex flex-justify-around t">
+            <!-- <div class="flex flex-justify-around t">
                 <div class="tab">
                     <div class="tnum">
                         9
@@ -30,7 +30,7 @@
                         点赞
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="person text-center bg-white" v-else>
             <div class="text-center">
@@ -66,10 +66,10 @@
             </div>
         </div>
         <van-cell-group>
-            <van-cell title="阅读偏好" is-link />
-            <van-cell title="用户反馈" is-link />
-            <van-cell title="关于我们" is-link />
-            <van-cell title="设置" is-link />
+            <van-cell title="阅读偏好" is-link to="/readlike"/>
+            <van-cell title="用户反馈" is-link to="/fankui"/>
+            <van-cell title="关于我们" is-link to="/about"/>
+            <!-- <van-cell title="设置" is-link /> -->
         </van-cell-group>
     </div>
 </template>
@@ -78,7 +78,8 @@
 export default {
   methods: {
     login() {
-        this.$store.commit('User_M',{result:1111})
+        this.$router.push('/login')
+       // this.$store.commit('User_M',{result:1111})
     }
   }
 };

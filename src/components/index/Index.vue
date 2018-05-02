@@ -12,6 +12,9 @@ export default {
     components:{
         Topbar1,
         NewList1
+    },
+    created(){
+         this.$store.dispatch('CategoryAction')
     }
 }
 </script>

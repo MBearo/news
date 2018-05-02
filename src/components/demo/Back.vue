@@ -1,6 +1,6 @@
 <template>
     <div class="topbar flex bg-white">
-        <div class="flex-0 topba_button">
+        <div class="flex-0 topba_button" @click="go">
             <i class="iconfont icon-back"></i>
         </div>
         <div class="flex-1">
@@ -11,7 +11,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+    methods:{
+        go(){
+            this.$router.go(-1)
+            //this.$emit('go')
+        }
+    }
+};
 </script>
 
 <style scoped>
@@ -31,4 +38,5 @@ i {
 .topba_button:active{
     background-color: #e8e8e8;
 }
+
 </style>

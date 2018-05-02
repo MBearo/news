@@ -2,7 +2,7 @@
     <div>
         <div class="nav flex bg-primary color-white">
             <div class="logo flex-0">
-                新闻联播
+                掌上新闻
             </div>
             <div class="nav-center flex-1">
                 <div class="search flex" @click="search">
@@ -16,8 +16,7 @@
             </div>
         </div>
         <van-tabs :active="active" @click="changeFenlei">
-            <van-tab v-for="index in 8" :title="'选项 ' + index" :key="index">
-
+            <van-tab v-for="(item,index) in $store.state.category" :title="item.Name" :key="index">
             </van-tab>
         </van-tabs>
     </div>
@@ -35,7 +34,9 @@ export default {
     search() {
       this.$router.push("/search");
     },
-    changeFenlei(index) {}
+    changeFenlei(index) {
+       this.$store.commit('SelectFenLei_M',{index})
+    }
   }
 };
 </script>
