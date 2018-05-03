@@ -37,7 +37,9 @@ export default {
     changes(index) {
       console.log(index);
     },
-    tijiao() {},
+    tijiao() {
+      this.$toast('提交成功')
+    },
     go() {
       this.$router.go(-1);
     }

@@ -8,7 +8,7 @@
 
       </div>
       <div class="pinglun flex-0 color-primary">
-        条评论
+        {{discuss.length}}条评论
       </div>
     </div>
     <div class="body">
@@ -30,8 +30,10 @@
         {{datas.content}}
       </div>
     </div>
-    <van-loading color="black" v-show="load" />
-
+    <div class="text-center">
+      <van-loading color="black" style="display:inline-block" v-show="load" />
+    </div>
+    <div class="text-center color-gray" v-show="kong">还没有评论，快来盖楼吧！</div>
     <Discuss1 class="bg-white" v-show="!load" :data="item" v-for="(item,index) in discuss" :key="index"></Discuss1>
     <div style="height:46px;"></div>
     <div class="review flex">
@@ -56,7 +58,8 @@ export default {
     return {
       load: true,
       discuss: [],
-      pinglun:''
+      pinglun:'',
+      kong:false
     };
   },
   created() {
@@ -76,9 +79,15 @@ export default {
         })
         .then(result => {
           this.load = false;
+          this.discuss.splice(0,this.discuss.length)
           result.data.data.list.forEach(value=>{
             this.discuss.push({id:value.CommentId,time:value.PostDate,uid:value.Uid,zan:value.LikeTime,desc:value.Content,name:value.Name})
           })
+          if(result.data.data.list.length==0){
+            this.kong=true
+          }else{
+            this.kong=false
+          }
           console.log(result);
         })
         .catch(error => {
@@ -86,7 +95,7 @@ export default {
         });
     },
     tijiaopinglun(){
-      if(this.$store.state.user.name==''){
+      if(this.$store.state.token.Username==''){
         this.$toast('请登录')
         this.$router.push('/login')
       }else{
@@ -95,7 +104,7 @@ export default {
           params: {
             id: this.$store.state.newsId,
             content:this.pinglun,
-            uname:this.$store.state.user.name
+            uname:this.$store.state.token.Username
           }
         })
         .then(result => {

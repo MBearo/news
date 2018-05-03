@@ -7,7 +7,9 @@ import urls from './urls'
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
-        token: '',
+        token: {
+            Username:'',
+        },
         user: {
             name:'',
             id:''
@@ -15,7 +17,8 @@ export default new Vuex.Store({
         newsList: [],
         newsId: '',
         newsIndex: '',
-        category: []
+        category: [],
+        searchText:''
     },
     actions: {
         NewsList_A({
@@ -99,6 +102,7 @@ export default new Vuex.Store({
         NewsList_M(state, {
             result
         }) {
+            state.newsList.splice(0,state.newsList.length)
             // state.newsList = result.data.data.list;
             result.data.data.list.forEach(({ Id, Title, Content, ReadTime, Category, PublishDate, ImgUrl, Author }) => {
                 state.newsList.push({ id: Id, title: Title, time: PublishDate, content: Content, img: ImgUrl, author: Author, category: Category, hidden: true })
@@ -132,6 +136,11 @@ export default new Vuex.Store({
         }) {
             state.category = result.data.data.list;
             state.category.unshift({ Id: 'all', Name: '全部' })
+        },
+        Search_M(state, {
+            result
+        }) {
+            state.searchText = result
         },
     },
     getters: {},

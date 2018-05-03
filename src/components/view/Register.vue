@@ -93,6 +93,10 @@ export default {
   box-sizing: border-box;
   margin: 30px 0;
 }
+.input input{
+  border: none;
+  outline: none;
+}
 .neirong {
   box-sizing: border-box;
   padding: 10px 20px;

@@ -58,6 +58,7 @@ export default {
             this.$store.commit("User_M", { result: result.data.data});
             this.$router.push("index");
           } else {
+            this.$toast("账号或密码错误！");
           }
           console.log(result);
         })
@@ -82,6 +83,10 @@ export default {
   padding: 10px 0;
   box-sizing: border-box;
   margin: 30px 0;
+}
+.input input{
+  border: none;
+  outline: none;
 }
 .neirong {
   box-sizing: border-box;

@@ -4,9 +4,9 @@
             热门搜索
         </div>
         <div class="hot_list">
-            <div class="flex hot_list-item" v-for="(item,index) in 10" :key="index+'0'" @click="details">
+            <div class="flex hot_list-item" v-for="(item,index) in title" :key="index+'0'" @click="details(item)">
                 <div class="flex-0 paixu">{{index+1}}.</div>
-                <div class="flex-1 new_title">我了个草</div>
+                <div class="flex-1 new_title">{{item.title}}</div>
             </div>
         </div>
     </div>
@@ -14,8 +14,15 @@
 
 <script>
 export default {
+  computed:{
+    title(){
+      let list=this.$store.state.newsList.sort((a,b)=>{return b.ReadTime-a.ReadTime})
+      return list.slice(0,10)
+    }
+  },
     methods:{
-        details(){
+        details(item){
+            this.$store.state.newsId=item.id;
             this.$router.push('details')
         }
     }

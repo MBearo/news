@@ -25,6 +25,7 @@ import ReadLike from '@/components/view/ReadLike'
 import Fankui from '@/components/view/Fankui'
 import Register from '@/components/view/Register'
 import ChangeImg from '@/components/view/ChangeImg'
+import SearchResult from '@/components/search/SearchResult'
 
 Vue.use(Router)
 
@@ -90,6 +91,12 @@ export default new Router({
       path: '/ChangeImg',
       name: 'ChangeImg',
       component: ChangeImg,
+    }
+    ,
+    {
+      path: '/SearchResult',
+      name: 'SearchResult',
+      component: SearchResult,
     }
   ]
 })
