@@ -7,7 +7,7 @@
 <script>
 import "../src/style/init.css";
 export default {
-  name: 'App'
+  name: 'App',
 }
 </script>
 

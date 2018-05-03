@@ -2,7 +2,7 @@
   <div>
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <van-list v-model="loading" :finished="finished" @load="onLoad">
-        <Card1 :data="item" :indexs="index" v-for="(item,index) in $store.state.newsList" :key="index" @click="lookDetails" ></Card1>
+        <Card1 :data="item" :indexs="index" v-for="(item,index) in $store.state.newsList" :key="index" @click="lookDetails" v-show="item.hidden"></Card1>
         <!-- <van-cell v-for="item in list" :key="item" :title="item + ''" @click="lookDetails"/> -->
       </van-list>
     </van-pull-refresh>
@@ -55,6 +55,7 @@ export default {
       this.$router.push("details");
     },
     refresh() {
+      console.log('zhixingle ')
       this.$store.dispatch("NewsList_A");
     }
   }

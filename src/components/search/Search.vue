@@ -12,30 +12,27 @@
       </div>
     </div>
     <div style="height:46px;"></div>
-    <Hot v-if="linshi"></Hot>
-    <NewList1 v-else></NewList1>
+    <Hot></Hot>
   </div>
 </template>
 
 <script>
 import Hot from './Hot'
-import NewList1 from '../index/NewList1'
 export default {
   data() {
     return {
       searchText: "",
-      linshi:true
     };
   },
   components:{
-    Hot,
-    NewList1
+    Hot
   },
   methods: {
     search() {
-      this.linshi=false
+      this.$store.commit('Search_M',{result:this.searchText})
+      //this.$store.state.searchText=this.searchText
+      this.$router.push('/SearchResult')
     },
-
   }
 };
 </script>

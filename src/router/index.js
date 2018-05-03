@@ -20,6 +20,13 @@ import Details from '@/components/details/index'
 
 import About from '@/components/view/About'
 
+import Login from '@/components/view/Login'
+import ReadLike from '@/components/view/ReadLike'
+import Fankui from '@/components/view/Fankui'
+import Register from '@/components/view/Register'
+import ChangeImg from '@/components/view/ChangeImg'
+import SearchResult from '@/components/search/SearchResult'
+
 Vue.use(Router)
 
 export default new Router({
@@ -57,6 +64,39 @@ export default new Router({
       path: '/About',
       name: 'About',
       component: About,
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: Login,
+    },
+    {
+      path: '/ReadLike',
+      name: 'ReadLike',
+      component: ReadLike,
+    },
+    {
+      path: '/Fankui',
+      name: 'Fankui',
+      component: Fankui,
+    }
+    ,
+    {
+      path: '/Register',
+      name: 'Register',
+      component: Register,
+    }
+    ,
+    {
+      path: '/ChangeImg',
+      name: 'ChangeImg',
+      component: ChangeImg,
+    }
+    ,
+    {
+      path: '/SearchResult',
+      name: 'SearchResult',
+      component: SearchResult,
     }
   ]
 })

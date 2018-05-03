@@ -7,7 +7,7 @@
           {{data.author}}
         </div>
         <div class="time">
-          {{data.time}}
+          {{data.time.slice(5,19)}}
         </div>
         <div class="other">
           {{data.other}}
