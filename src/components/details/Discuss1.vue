@@ -1,34 +1,33 @@
 <template>
-    <div class="flex discuss-item">
-            <div class="flex-0">
-              <div class="header">
+  <div class="flex discuss-item">
+    <div class="flex-0">
+      <div class="header">
 
-              </div>
-          </div>
-            <div class="flex-1">
-                <div class="flex">
-                    <div class="name flex-1">
-                        {{data.name}}
-                    </div>
-                    <div class="zan flex-0">
-                        {{data.zan}}赞
-                    </div>
-                </div>
-                <div class="time">
-                    {{data.time}}
-                </div>
-                <div class="desc">
-                    {{data.desc}}
-                </div>
-            </div>
+      </div>
     </div>
+    <div class="flex-1">
+      <div class="flex">
+        <div class="name flex-1">
+          {{data.name}}
+        </div>
+        <div class="zan flex-0 animated"  :class="[dianzan,donghua]" @click="jiazan(data.id,data.zan)">
+          {{data.zan}} <i class="iconfont icon-appreciate " ></i>
+        </div>
+      </div>
+      <div class="time">
+        {{data.time}}
+      </div>
+      <div class="desc">
+        {{data.desc}}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    data: 
-    {
+    data: {
       id: "",
       name: "",
       zan: "",
@@ -43,6 +42,39 @@ export default {
           desc: "暂无评论"
         };
       }
+    }
+  },
+  data() {
+    return {
+      dianzan:'',
+      donghua:''
+    };
+  },
+  computed:{
+
+  },
+  methods: {
+    jiazan(id, zan) {
+      this.donghua='tada'
+      this.$toast('正在提交')
+      this.dianzan = "dianle";
+      this.$axios
+        .post(
+          this.$url + "Graduation/ModifyData",
+          this.$qs.stringify({
+            object: "comment",
+            keyToModify: "LikeTime",
+            idValue: id,
+            value: parseInt(zan)  + 1
+          })
+        )
+        .then(result => {
+          this.$emit('refresh')
+          console.log(result);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };
@@ -71,5 +103,8 @@ export default {
 }
 .zan {
   color: #9a9a9a;
+}
+.dianle {
+  color: #e22829;
 }
 </style>

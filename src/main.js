@@ -8,6 +8,7 @@ import store from './vuex'
 import axios from 'axios'
 import urls from './vuex/urls'
 import qs from 'qs'
+import 'animate.css'
 
 Vue.prototype.$axios = axios
 Vue.prototype.$url=urls.urls

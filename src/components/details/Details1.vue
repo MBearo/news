@@ -34,7 +34,7 @@
       <van-loading color="black" style="display:inline-block" v-show="load" />
     </div>
     <div class="text-center color-gray" v-show="kong">还没有评论，快来盖楼吧！</div>
-    <Discuss1 class="bg-white" v-show="!load" :data="item" v-for="(item,index) in discuss" :key="index"></Discuss1>
+    <Discuss1 @refresh="getList" class="bg-white" v-show="!load" :data="item" v-for="(item,index) in discuss" :key="index"></Discuss1>
     <div style="height:46px;"></div>
     <div class="review flex">
       <div class="flex-1 review_input-content">

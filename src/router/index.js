@@ -26,6 +26,7 @@ import Fankui from '@/components/view/Fankui'
 import Register from '@/components/view/Register'
 import ChangeImg from '@/components/view/ChangeImg'
 import SearchResult from '@/components/search/SearchResult'
+import NewNews from '@/components/view/NewNews'
 
 Vue.use(Router)
 
@@ -97,6 +98,12 @@ export default new Router({
       path: '/SearchResult',
       name: 'SearchResult',
       component: SearchResult,
+    }
+    ,
+    {
+      path: '/NewNews',
+      name: 'NewNews',
+      component: NewNews,
     }
   ]
 })

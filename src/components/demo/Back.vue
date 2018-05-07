@@ -1,10 +1,10 @@
 <template>
-    <div class="topbar flex bg-white">
+    <div class="topbar flex bg-white" >
         <div class="flex-0 topba_button" @click="go">
             <i class="iconfont icon-back"></i>
         </div>
-        <div class="flex-1">
-
+        <div class="flex-1 text-center">
+            {{title}}
         </div>
         <div class="flex-0 topba_button"></div>
     </div>
@@ -12,6 +12,11 @@
 
 <script>
 export default {
+    props:{
+        title:{
+            default:''
+        }
+    },
     methods:{
         go(){
             this.$router.go(-1)
