@@ -10,8 +10,9 @@
         <div class="name flex-1">
           {{data.name}}
         </div>
-        <div class="zan flex-0 animated"  :class="[dianzan,donghua]" @click="jiazan(data.id,data.zan)">
-          {{data.zan}} <i class="iconfont icon-appreciate " ></i>
+        <div class="zan flex-0 animated" :class="[dianzan,donghua]" @click="jiazan(data.id,data.zan)">
+          {{data.zan}}
+          <i class="iconfont icon-appreciate "></i>
         </div>
       </div>
       <div class="time">
@@ -46,18 +47,23 @@ export default {
   },
   data() {
     return {
-      dianzan:'',
-      donghua:''
+      dianzan: "",
+      donghua: ""
     };
   },
-  computed:{
-
-  },
+  computed: {},
   methods: {
     jiazan(id, zan) {
-      this.donghua='tada'
-      this.$toast('正在提交')
-      this.dianzan = "dianle";
+      let haha=parseInt(zan) + 1
+      if (this.dianzan == "dianle") {
+        this.$toast("正在取消");
+        this.dianzan=''
+        haha=parseInt(zan) - 1;
+      } else {
+        this.donghua = "tada";
+        this.$toast("正在提交");
+        this.dianzan = "dianle";
+      }
       this.$axios
         .post(
           this.$url + "Graduation/ModifyData",
@@ -65,11 +71,11 @@ export default {
             object: "comment",
             keyToModify: "LikeTime",
             idValue: id,
-            value: parseInt(zan)  + 1
+            value: haha
           })
         )
         .then(result => {
-          this.$emit('refresh')
+           this.$emit('refresh')
           console.log(result);
         })
         .catch(error => {

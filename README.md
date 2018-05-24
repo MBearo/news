@@ -46,3 +46,71 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+
+## 基础
+
+html 页面里有什么
+css 这个东西长什么样
+JavaScript（js）可以操作html和css
+
+## 概况
+
+前后端分离（开发模式）的web项目
+前端是一个使用mvvm模式开发的单页面应用
+ajax（核心）
+后端，（用户端，管理员端）前端
+
+后端：吐数据，用各种sql语句，增删改查（sql）
+
+前端技术栈：{
+js框架：vue，vue-router,vuex，vue-cli
+ui框架：vant
+ajax封装：axios
+环境：nodejs
+图标实现：阿里巴巴iconfont
+打包工具：webpack(.vue,组件化)
+}
+
+jQuary   bootstrap
+js框架    ui框架
+
+jq：直接操作html结构和css样式
+vue:通过数据驱动来变更内容
+
+
+后台：{
+  ui框架：element——ui
+}
+demo：上传图片：
+1. 把图片转为base64传输
+2. data-form 用ajax模拟一个post表单的文件提交
+
+
+
+
+
+
+登录：获取用户输入值，ajax传到后台，sql查询用户名和密码是否匹配，如果匹配返回个人信息，表示登陆成功；
+注册：先看账号充不重复；
+
+
+登录之后，拉取个人细信息，包含稀罕的新闻分类，渲染对应分类，分别请求不同新闻类别的新闻
+判断是否为空，格式对不对，长度打不达到要求，sql插入
+喜好表：uid（用户id），新闻分类的id
+新闻分类表：
+用户表；
+
+搜索 sql的模糊查询
+热搜 同时判断，浏览次数和点赞次数
+
+
+如何判断登录
+吧个人信息存在cookie里 每次请求会待在请求头里，加重负担，很小
+吧新信息在localstorage 存在本地，不用待在请求头，有4M的容量，长期有效
+
+
+发布写新闻，先上传图片，返回地址，同下面的文字，用户id一同上窜
+
+点赞表：uid 评论id 对否点赞
